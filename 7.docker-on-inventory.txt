@@ -1,0 +1,33 @@
+#demo.oci.yaml
+
+plugin: oracle.oci.oci
+#hostname_format: "fqdn"
+
+#filters:
+# defined_tags: { "project": { "name": "simple-app" } }
+
+regions:
+- us-ashburn-1
+
+compartments:
+- compartment_ocid: "ocid1.compartment.oc1..aaaaaaaamk6cd2vbme4mwuf2jngyr5u3nfu3swtc4xynjh5eoxm73hejehbq"
+  fetch_hosts_from_subcompartments: false
+
+
+
+# playbook.yml
+---
+- hosts: all
+  connection : local
+  tasks:
+    - name: install docker
+      command:  yum install -y docker
+    - name : start docker
+      command : systemctl start docker
+    - name: install python docker
+      command: pip3 install docker
+
+    - name: deploy nginx docker container
+      command: docker run -d  -P  nginx
+    - name:  list all containers
+      command: docker ps -a
