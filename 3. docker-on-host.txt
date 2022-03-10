@@ -1,0 +1,21 @@
+- hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+    - name: install docker
+      become: yes
+      command:  yum install -y docker
+    - name : start docker
+      become: yes
+      command : systemctl start docker
+
+    - name: deploy nginx docker container
+      command: docker run -d  --name testnginx -p 8085:80 nginx
+    - name: list all containers
+      command: docker ps -a
+    - name: verify service working
+      command: curl {{ansible_hostname}}:8085
+    - name: remove container
+      command : docker rm -f testnginx
+
+
