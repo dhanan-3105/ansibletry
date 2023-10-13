@@ -14,3 +14,4 @@ The sample needs the following environment variables as pre-requisite.
 - SAMPLE_COMPARTMENT_OCID
 - SAMPLE_IMAGE_OCID
 - SAMPLE_AD_NAME
+ - Arun Bharathwaj edited this file 

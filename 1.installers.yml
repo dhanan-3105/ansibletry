@@ -36,4 +36,4 @@
 
   - name: print details
     debug: 
-      msg: "Installation and uninstallation done " 
+      msg: "Install and uninstall is completed" 
